@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "extensionId": "org.fleet.crossseed",
+  "pages": [
+    {
+      "id": "crossseed",
+      "title": "Cross-seed",
+      "route": "/ext/org.fleet.crossseed/crossseed"
+    }
+  ],
+  "actions": [
+    {
+      "id": "scan-now",
+      "label": "Scan now",
+      "target": "global",
+      "primary": true
+    },
+    {
+      "id": "cross-seed-now",
+      "label": "Cross-seed",
+      "target": "selection"
+    }
+  ],
+  "panels": [
+    {
+      "id": "crossseed",
+      "title": "Cross-seed",
+      "placement": "settings"
+    }
+  ],
+  "forms": [
+    {
+      "id": "crossseed-settings",
+      "title": "Cross-seed targets and scan",
+      "fields": [
+        {
+          "name": "enabled",
+          "label": "Enabled (auto on complete)",
+          "kind": "boolean",
+          "help": "Master switch for this worker."
+        },
+        {
+          "name": "intervalSec",
+          "label": "Scan interval (seconds)",
+          "kind": "number",
+          "required": true,
+          "help": "How often the worker wakes up.",
+          "placeholder": "60",
+          "advanced": true
+        },
+        {
+          "name": "onlyComplete",
+          "label": "Only send complete torrents",
+          "kind": "boolean"
+        },
+        {
+          "name": "skipIfPresent",
+          "label": "Skip if already on target",
+          "kind": "boolean"
+        },
+        {
+          "name": "targetGatewayIdsText",
+          "label": "Target gateway IDs",
+          "kind": "textarea",
+          "help": "One gateway id per line.",
+          "rows": 6,
+          "advanced": true
+        }
+      ],
+      "loadMethod": "ext.crossseed.getSettings",
+      "submitMethod": "ext.crossseed.saveSettings",
+      "description": "Find cross-seed candidates from existing data."
+    }
+  ]
+}

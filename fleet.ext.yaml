@@ -1,0 +1,21 @@
+schema: 1
+id: org.fleet.crossseed
+name: Cross-seed
+description: Push completed downloads to other clients for seeding on the same data path.
+version: 1.0.0
+api: ">=1.0.0 <2.0.0"
+engines:
+  - rtorrent
+capabilities:
+  - torrents.read
+  - storage.read
+  - storage.write
+  - gateways.read
+  - gateways.write
+frontend:
+  type: declarative
+  entry: ui/extension.json
+backend:
+  type: process
+  executable: bin/crossseed-worker
+  protocol: jsonrpc-2
